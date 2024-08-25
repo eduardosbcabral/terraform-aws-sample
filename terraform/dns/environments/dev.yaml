@@ -1,0 +1,18 @@
+global:
+  env: "dev"
+  dns_name: "{{{PUT_HERE_sample_DNS}}}"
+  root_hosted_zone_id: ""
+  dev_hosted_zone_id: ""
+  region: "us-east-1"
+  role_arn: "arn:aws:iam::968779039471:role/Assm_role_route53"
+  session_name: "AssumeRoleSession1"
+  alb_name: "sample-dev-alb"
+  tags:
+    service: "{{{PUT_HERE_sample_DNS}}}"
+    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    managed_by : "terraform"
+    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+
+dns:
+  api:
+    domain_name: "api"

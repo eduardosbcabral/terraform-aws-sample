@@ -1,0 +1,24 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameter*"
+      ],
+      "Resource": ["arn:aws:ssm:${region}:${account_id}:*"]
+    },
+    {
+      "Action": [
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:List*",
+        "secretsmanager:Get*"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:secretsmanager:${region}:${account_id}:secret:*",
+        "arn:aws:secretsmanager:${region}:${account_id}:secret:*"
+      ]
+    }
+  ]
+}

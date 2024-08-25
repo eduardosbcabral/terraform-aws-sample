@@ -1,0 +1,19 @@
+global:
+  env : "prd"
+  region : "us-east-1"
+  vpc_id : "vpc-0252e3d241253a8e0"
+  tags:
+    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    managed_by : "terraform"
+    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+
+databases:
+  sample:
+    name: sample
+    port: 5432
+    engine: postgres
+    version: 16.2
+    instance: db.t3.micro
+    storage: 20
+    username: sample
+    parameter_group_name: default.postgres16

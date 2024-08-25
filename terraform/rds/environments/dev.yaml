@@ -1,0 +1,19 @@
+global:
+  env : "dev"
+  region : "us-east-1"
+  vpc_id : "vpc-0252e3d241253a8e0"
+  # PUBLIC SUBNETS
+  subnet_ids : ["subnet-01398ad9591ccd39f", "subnet-092b29668189aedd9", "subnet-0ef22fa7e4aa26f0b"]
+  documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+  repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+
+databases:
+  sample:
+    name: sample
+    port: 5432
+    engine: postgres
+    version: 16.2
+    instance: "db.t3.micro"
+    storage: 20
+    username: sample
+    parameter_group_name: "default.postgres16"

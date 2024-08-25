@@ -1,0 +1,25 @@
+global:
+  env: "dev"
+  cluster_name: "sample-ecs"
+  repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+  region: "us-east-1"
+  vpc_id: "vpc-0252e3d241253a8e0"
+  account_id: "968779039471"
+  subnet_ids: # PRIVATE SUBNETS
+    - "subnet-09b7d40b769922a74"
+    - "subnet-074eb5789fc88ce3e"
+    - "subnet-0fc2a0164326498eb"
+  alb: sample-dev-alb
+  documentation: "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/microservices-infrastructure/README.md"
+
+microservices:
+  # front_end:
+  #   service_name: "app1"
+  #   path: ["/app1"]
+  #   health_check_path: "/"
+  #   port: 80
+  document_scanner_api:
+    service_name: "document-scanner-api"
+    path: ["/document_scanner/*"]
+    health_check_path: "/document_scanner/healthcheck"
+    port: 5028

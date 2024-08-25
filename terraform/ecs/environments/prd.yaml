@@ -1,0 +1,8 @@
+global:
+  env : "prd"
+  name : "sample-ecs"
+  region: "us-east-1"
+  tags:
+    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    managed_by : "terraform"
+    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"

@@ -1,0 +1,29 @@
+name: dev - vpc terraform
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Deploy resources!'
+        type: boolean
+        required: false
+        default: false
+      destroy:
+        description: 'WARNING: destroy resources?'
+        type: boolean
+        required: false
+        default: false
+
+env:
+  TF_DIRECTORY: 'vpc'
+  ENVIRONMENT: 'development'
+  
+jobs:
+  terraform:
+    uses: ./.github/workflows/tf.yaml
+    secrets: inherit
+    with:
+      deploy: ${{ inputs.deploy }}
+      destroy: ${{ inputs.destroy }}
+      tf_directory: vpc
+      environment: development

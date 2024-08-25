@@ -1,0 +1,29 @@
+name: init terraform workspace
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Whether or not to deploy resources'
+        type: boolean
+        required: false
+        default: false
+      destroy:
+        description: 'Whether or not to destroy resources'
+        type: boolean
+        required: false
+        default: false
+
+env:
+  TF_DIRECTORY: 'init-tf'
+  ENVIRONMENT: 'development'
+
+jobs: 
+  terraform:
+    uses: ./.github/workflows/tf.yaml
+    secrets: inherit
+    with:
+      deploy: ${{ inputs.deploy }}
+      destroy: ${{ inputs.destroy }}
+      tf_directory: init-tf
+      environment: development

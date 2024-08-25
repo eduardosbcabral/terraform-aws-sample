@@ -1,0 +1,53 @@
+[
+  {
+    "name": "${service_name}-container",
+    "image": "${account_id}.dkr.ecr.${region}.amazonaws.com/${service_name}:latest",
+    "cpu": 256,
+    "memory": 256,
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+          "awslogs-group": "/ecs/${service_name}-${env}-logs",
+          "awslogs-create-group": "true",
+          "awslogs-region": "${region}",
+          "awslogs-stream-prefix": "${service_name}"
+      }
+    },
+    "portMappings": [
+      {
+        "containerPort": ${port},
+        "hostPort": ${port},
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "ASPNETCORE_ENVIRONMENT",
+        "value": "Staging"
+      }
+    ],
+    "secrets": [
+      {
+        "name": "DATABASE__HOST",
+        "valueFrom": "/dev/document_scanner_api/DATABASE__HOST"
+      },
+      {
+        "name": "DATABASE__PORT",
+        "valueFrom": "/dev/document_scanner_api/DATABASE__PORT"
+      },
+      {
+        "name": "DATABASE__DATABASENAME",
+        "valueFrom": "/dev/document_scanner_api/DATABASE__DATABASENAME"
+      },
+      {
+        "name": "DATABASE__USERNAME",
+        "valueFrom": "arn:aws:secretsmanager:${region}:${account_id}:secret:rds!db-5e983a82-38c2-42e5-a2e8-f8f1a0eefc62:username::"
+      },
+      {
+        "name": "DATABASE__PASSWORD",
+        "valueFrom": "arn:aws:secretsmanager:${region}:${account_id}:secret:rds!db-5e983a82-38c2-42e5-a2e8-f8f1a0eefc62:password::"
+      }
+    ]
+  }
+]

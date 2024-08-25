@@ -1,0 +1,84 @@
+name: base terraform
+
+on:
+  workflow_call:
+    inputs:
+      deploy:
+        description: 'Whether or not to deploy resources'
+        type: boolean
+        required: true
+      destroy:
+        description: 'Whether or not to destroy resources'
+        type: boolean
+        required: true
+      environment:
+        type: string
+        required: true
+      tf_directory:
+        type: string
+        required: true
+
+
+env:
+  BASE_TF_DIRECTORY: 'terraform'
+  DEV_WORKSPACE: 'dev'
+  PRD_WORKSPACE: 'prd'
+  
+jobs: 
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: '1.0.0'
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ vars.AWS_REGION }}
+    
+    - name: Initialize terraform and set workspace
+      shell: bash
+      run: |
+        cd ${{ env.BASE_TF_DIRECTORY }}/${{ inputs.tf_directory }}
+        terraform init
+
+    - name: Set dev workspace
+      if: ${{ inputs.environment == 'development' }}
+      shell: bash
+      run: |
+        cd ${{ env.BASE_TF_DIRECTORY }}/${{ inputs.tf_directory }}
+        terraform workspace select ${{ env.DEV_WORKSPACE }} || terraform workspace new ${{ env.DEV_WORKSPACE }}
+
+    - name: Set prd workspace
+      if: ${{ inputs.environment == 'production' }}
+      shell: bash
+      run: |
+        cd ${{ env.BASE_TF_DIRECTORY }}/${{ inputs.tf_directory }}
+        terraform workspace select ${{ env.PRD_WORKSPACE }} || terraform workspace new ${{ env.PRD_WORKSPACE }}
+
+    - name: Plan Terraform
+      if: github.event.inputs.deploy == 'false'
+      shell: bash
+      run: |
+        cd ${{ env.BASE_TF_DIRECTORY }}/${{ inputs.tf_directory }}
+        terraform plan
+
+    - name: Apply Terraform
+      if: github.event.inputs.deploy == 'true' && github.event.inputs.destroy == 'false'
+      shell: bash
+      run: |
+        cd ${{ env.BASE_TF_DIRECTORY }}/${{ inputs.tf_directory }}
+        terraform apply --auto-approve
+
+    - name: Terraform Destroy
+      if: github.event.inputs.deploy == 'false' && github.event.inputs.destroy == 'true'
+      run: |
+        cd ${{ env.BASE_TF_DIRECTORY }}/${{ inputs.tf_directory }}
+        terraform destroy --auto-approve

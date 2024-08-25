@@ -1,0 +1,9 @@
+env : "dev"
+name : "my-cert"
+region : "us-east-1"
+documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+account_name : "development"
+managed_by : "terraform"
+repository : "https://github.com/eduardosbcabral/terraform-aws-sample"
+domain_name : "{{{PUT_HERE_sample_DNS}}}"
+subject_alternative_names : ["*.{{{PUT_HERE_sample_DNS}}}"]

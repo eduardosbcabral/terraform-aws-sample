@@ -1,0 +1,16 @@
+global:
+  env : "dev"
+  region : "us-east-1"
+  # PUBLIC SUBNETS
+  subnet_ids : ["subnet-01398ad9591ccd39f", "subnet-092b29668189aedd9", "subnet-0ef22fa7e4aa26f0b"]
+  vpc_id : "vpc-0252e3d241253a8e0"
+  container_port : "8080"
+  domain_name: "{{{PUT_HERE_sample_DNS}}}"
+  alb_name: "sample-dev-alb"
+  load_balancer_type : "application"
+  path : "/"
+  create_attachment : "false"
+  tags:
+    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    managed_by : "terraform"
+    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"

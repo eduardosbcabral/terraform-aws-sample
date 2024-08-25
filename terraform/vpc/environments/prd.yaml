@@ -1,0 +1,11 @@
+global:
+  name : "sample-vpc"
+  env : "prd"
+  region: "us-east-1"
+  vpc_cidr: "10.0.0.0/16"
+  private_subnet_names: ["My Private Subnet 1", "My Private Subnet 2", "My Private Subnet 3"]
+  public_subnet_names: ["My Public Subnet 1", "My Public Subnet 2", "My Public Subnet 3"]
+  tags:
+    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    managed_by : "terraform"
+    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"

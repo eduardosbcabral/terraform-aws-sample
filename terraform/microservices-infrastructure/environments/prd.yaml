@@ -1,0 +1,29 @@
+global:
+  env: "prd"
+  cluster_name: "sample-prd-ecs"
+  repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+  region: "us-east-1"
+  vpc_id: "vpc-0afe0b99128123456"
+  subnet_ids:
+    - "subnet-0183c943781111111"
+    - "subnet-03f050f9a22222222"
+    - "subnet-0b343dc05e3333333"
+  alb: sample-prd-alb
+  documentation: "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/microservices-infrastructure/README.md"
+
+microservices:
+  front_end:
+    service_name: "app1"
+    path: ["/app1"]
+    health_check_path: "/"
+    port: 80
+  payment_gtw:
+    service_name: "app2"
+    path: ["/app2"]
+    health_check_path: "/app2"
+    port: 80
+  sample_backend:
+    service_name: "app3"
+    path: ["/app3"]
+    health_check_path: "/"
+    port: 8080
