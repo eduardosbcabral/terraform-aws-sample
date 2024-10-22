@@ -30,12 +30,25 @@ module "db" {
   db_name                     = "${each.value.name}${local.global_config.env}"
   username                    = each.value.username
   port                        = each.value.port
-  manage_master_user_password = true
   skip_final_snapshot         = true
   publicly_accessible         = true
   vpc_security_group_ids      = [aws_security_group.rds_sg[each.key].id]
-  create_db_parameter_group   = false
-  parameter_group_name        = each.value.parameter_group_name
   create_db_subnet_group      = true
   subnet_ids                  = local.global_config.subnet_ids
+
+  manage_master_user_password_rotation              = true
+  master_user_password_rotate_immediately           = false
+  // Rotate secret on every 2,73 years. We need this just to avoid the secret rotations hahaha
+  master_user_password_rotation_schedule_expression = "rate(999 days)" 
+
+  parameter_group_use_name_prefix = false
+  create_db_parameter_group       = true
+  parameter_group_name            = each.value.parameter_group_name
+  family                          = each.value.family
+  parameters = [
+    {
+      name  = "rds.force_ssl",
+      value = 0
+    }
+  ]
 }

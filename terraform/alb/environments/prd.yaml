@@ -1,8 +1,8 @@
 global:
   env : "prd"
   region : "us-east-1"
-  subnet_ids : ["subnet-0bbbd431a8e111111", "subnet-0c213b66fe222222b", "subnet-05e9739b38b333333"]
-  vpc_id : "vpc-0afe0b99128000000"
+  subnet_ids : ["{{SUBNET_ID_1}}", "{{SUBNET_ID_2}}", "{{SUBNET_ID_3}}"]
+  vpc_id : "{{VPC_ID}}"
   container_port : "8080"
   domain_name: "{{{PUT_HERE_sample_DNS}}}"
   alb_name: "sample-prd-alb"
@@ -10,6 +10,6 @@ global:
   path : "/"
   create_attachment : "false"
   tags:
-    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    documentation : "DOC_URL"
     managed_by : "terraform"
-    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+    repository: "GITHUB_REPO"

@@ -6,6 +6,6 @@ global:
   private_subnet_names: ["My Private Subnet 1", "My Private Subnet 2", "My Private Subnet 3"]
   public_subnet_names: ["My Public Subnet 1", "My Public Subnet 2", "My Public Subnet 3"]
   tags:
-    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    documentation : "DOC_URL"
     managed_by : "terraform"
-    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+    repository: "GITHUB_REPO"

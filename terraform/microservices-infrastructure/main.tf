@@ -4,15 +4,17 @@ resource "aws_ecs_task_definition" "task" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = aws_iam_role.execution_role[each.key].arn
-  cpu                      = "256" 
-  memory                   = "512" 
+  cpu                      = each.value.container_cpu * each.value.desired_count
+  memory                   = each.value.container_memory * each.value.desired_count
   # task_role_arn = "role_arn_for_services_todo"
   container_definitions = templatefile("${path.module}/container-definitions/${each.value.service_name}/${local.global_config.env}.json", {
-    service_name = each.value.service_name,
-    port         = each.value.port != "" ? each.value.port : 8080,
-    region       = local.global_config.region
-    env          = local.global_config.env
-    account_id   = local.global_config.account_id
+    service_name     = each.value.service_name,
+    port             = each.value.port != "" ? each.value.port : 8080,
+    container_cpu    = each.value.container_cpu
+    container_memory = each.value.container_memory
+    region           = local.global_config.region
+    env              = local.global_config.env
+    account_id       = local.global_config.account_id,
   })
 }
 
@@ -56,7 +58,7 @@ resource "aws_ecs_service" "service" {
   task_definition = aws_ecs_task_definition.task[each.key].arn
   launch_type     = "FARGATE"
 
-  desired_count = 2
+  desired_count = each.value.desired_count
 
   network_configuration {
     subnets          = local.global_config.subnet_ids

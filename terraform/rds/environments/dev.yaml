@@ -1,11 +1,11 @@
 global:
   env : "dev"
   region : "us-east-1"
-  vpc_id : "vpc-0252e3d241253a8e0"
+  vpc_id : "{{VPC_ID}}"
   # PUBLIC SUBNETS
-  subnet_ids : ["subnet-01398ad9591ccd39f", "subnet-092b29668189aedd9", "subnet-0ef22fa7e4aa26f0b"]
-  documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
-  repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+  subnet_ids : ["{{SUBNET_ID_1}}", "{{SUBNET_ID_2}}", "{{SUBNET_ID_3}}"]
+  documentation : "DOC_URL"
+  repository: "GITHUB_REPO"
 
 databases:
   sample:

@@ -1,0 +1,11 @@
+global:
+  env : "dev"
+  region : "us-east-1"
+  documentation : "https://github.com/kognitive/terraform/blob/main/README.md"
+  repository: "https://github.com/kognitive/terraform"
+
+queues:
+  sample_queue:
+    name: sample_queue
+    dead_letter: sample_deadletter_queue
+  

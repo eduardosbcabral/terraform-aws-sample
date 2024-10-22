@@ -1,0 +1,11 @@
+global:
+  env : "prd"
+  region : "us-east-1"
+  documentation : "DOC_URL"
+  repository: "REPO_URL"
+
+queues:
+  sample_queue:
+    name: sample_queue
+    dead_letter: sample_deadletter_queue
+  

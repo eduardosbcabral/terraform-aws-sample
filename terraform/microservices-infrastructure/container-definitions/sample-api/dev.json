@@ -2,8 +2,8 @@
   {
     "name": "${service_name}-container",
     "image": "${account_id}.dkr.ecr.${region}.amazonaws.com/${service_name}:latest",
-    "cpu": 256,
-    "memory": 256,
+    "cpu": ${container_cpu},
+    "memory": ${container_memory},
     "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",

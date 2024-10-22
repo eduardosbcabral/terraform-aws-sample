@@ -9,9 +9,9 @@ global:
   alb_name: "sample-prd-alb"
   tags:
     service: "{{{PUT_HERE_sample_DNS}}}"
-    documentation : "https://github.com/eduardosbcabral/terraform-aws-sample/blob/main/README.md"
+    documentation : "DOC_URL"
     managed_by : "terraform"
-    repository: "https://github.com/eduardosbcabral/terraform-aws-sample"
+    repository: "GITHUB_REPO"
 
 dns:
   api:

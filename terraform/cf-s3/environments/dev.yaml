@@ -1,8 +1,12 @@
 global:
   env : "dev"
-  name : "sample-ecs"
   region: "us-east-1"
   tags:
     documentation : "DOC_URL"
     managed_by : "terraform"
     repository: "GITHUB_REPO"
+
+buckets:
+  example_api:
+    name: "example-api"
+    domain_name: ""
