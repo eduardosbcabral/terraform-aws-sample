@@ -3,12 +3,12 @@ global:
   cluster_name: "sample-ecs"
   repository: "GITHUB_REPO"
   region: "us-east-1"
-  vpc_id: "{{VPC_ID}}"
-  account_id: "{{ACCOUNT_ID}}"
+  vpc_id: "vpc-0d75387bb3c5f98fc"
+  account_id: "611088767118"
   subnet_ids: # PRIVATE SUBNETS
-    - "{{SUBNET_ID_1}}"
-    - "{{SUBNET_ID_2}}"
-    - "{{SUBNET_ID_3}}"
+    - "subnet-0d4aeab7f9ec6a22e"
+    - "subnet-0c713039ed8f48d3b"
+    - "subnet-053f0cb57635417ac"
   alb: sample-dev-alb
   documentation : "DOC_URL"
 
