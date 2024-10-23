@@ -6,9 +6,9 @@ global:
   vpc_id: "vpc-0d75387bb3c5f98fc"
   account_id: "611088767118"
   subnet_ids: # PRIVATE SUBNETS
-    - "subnet-0d4aeab7f9ec6a22e"
-    - "subnet-0c713039ed8f48d3b"
-    - "subnet-053f0cb57635417ac"
+    - "subnet-0265ecca4c844fcad"
+    - "subnet-0f7edbfdab05b5f5d"
+    - "subnet-0e326cdf17e8bc2fa"
   alb: sample-dev-alb
   documentation : "DOC_URL"
 
@@ -25,5 +25,5 @@ microservices:
     health_check_path: "/sample/healthcheck"
     port: 5028
     desired_count: 2
-    container_cpu: 64
+    container_cpu: 128
     container_memory: 256

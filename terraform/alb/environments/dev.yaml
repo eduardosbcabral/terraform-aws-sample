@@ -2,7 +2,7 @@ global:
   env : "dev"
   region : "us-east-1"
   # PUBLIC SUBNETS
-  subnet_ids : ["subnet-0d4aeab7f9ec6a22e", "subnet-0c713039ed8f48d3b", "subnet-053f0cb57635417ac"]
+  subnet_ids : ["subnet-0265ecca4c844fcad", "	subnet-0f7edbfdab05b5f5d", "subnet-0e326cdf17e8bc2fa"]
   vpc_id : "vpc-0d75387bb3c5f98fc"
   container_port : "8080"
   domain_name: "{{{PUT_HERE_sample_DNS}}}"
