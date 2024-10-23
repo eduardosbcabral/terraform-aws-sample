@@ -21,7 +21,7 @@ microservices:
   #   port: 80
   sample_api:
     service_name: "sample-api"
-    path: ["/sample_/*"]
+    path: ["/sample/*"]
     health_check_path: "/sample/healthcheck"
     port: 5028
     desired_count: 2
