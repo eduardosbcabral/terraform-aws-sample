@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       deploy:
-        description: 'Whether or not to deploy resources'
+        description: 'Deploy resources!'
         type: boolean
         required: false
         default: false
