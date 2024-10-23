@@ -25,5 +25,5 @@ microservices:
     health_check_path: "/sample/healthcheck"
     port: 5028
     desired_count: 2
-    container_cpu: 256
-    container_memory: 512
+    container_cpu: 64
+    container_memory: 256
