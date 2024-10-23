@@ -5,7 +5,8 @@ global:
   region: "us-east-1"
   vpc_id: "vpc-0d75387bb3c5f98fc"
   account_id: "611088767118"
-  subnet_ids: # PRIVATE SUBNETS
+  # ====== PRIVATE SUBNETS ====== #
+  subnet_ids:
     - "subnet-0265ecca4c844fcad"
     - "subnet-0f7edbfdab05b5f5d"
     - "subnet-0e326cdf17e8bc2fa"
