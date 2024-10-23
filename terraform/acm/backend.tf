@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-workplaces"
+    bucket = "terraform-states-edsbc"
     key    = "us/acm/terraform.tfstate"
     region = "us-east-1"
   }
