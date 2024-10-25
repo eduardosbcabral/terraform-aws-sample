@@ -2,8 +2,8 @@ global:
   env : "dev"
   region : "us-east-1"
   # ====== PUBLIC SUBNETS ====== #
-  subnet_ids : ["subnet-0d4aeab7f9ec6a22e", "	subnet-0c713039ed8f48d3b", "subnet-053f0cb57635417ac"]
-  vpc_id : "vpc-0d75387bb3c5f98fc"
+  subnet_ids : ["{{SUBNET_ID_1}}", "{{SUBNET_ID_2}}", "{{SUBNET_ID_3}}"]
+  vpc_id : "{{VPC_ID}}"
   container_port : "8080"
   domain_name: "{{{PUT_HERE_sample_DNS}}}"
   alb_name: "sample-dev-alb"
